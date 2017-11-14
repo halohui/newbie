@@ -359,11 +359,61 @@ func CountSort(data []int, radix int) {
 	}
 
 	for i := length - 1; i >= 0; i-- {
-		count[data[i]]--  //下标是从0开始的，因此先减1
+		count[data[i]]-- //下标是从0开始的，因此先减1
 		assist[count[data[i]]] = data[i]
 	}
 
 	for i := 0; i < length; i++ {
 		data[i] = assist[i]
+	}
+}
+
+/****************************************************************************
+* 功能描述: 基数排序
+* 输入参数:
+* 输出参数:
+* 返 回 值:
+* 其他说明:
+
+* 修改日期                      版本号          修改人            修改内容
+* ---------------------------------------------------------------------------
+*  2017-11-14 20:18:59          0.00           cxh                创建
+*
+*****************************************************************************/
+func findMax(data []int) int {
+	length, max := len(data), data[0]
+	for i := 1; i < length; i++ {
+		if data[i] > max {
+			max = data[i]
+		}
+	}
+	return max
+}
+
+func BucketSort(data []int, radix, exp int) {
+	length, count, assist := len(data), make([]int, radix), make([]int, len(data))
+	for i := 0; i < length; i++ {
+		count[(data[i]/exp)%radix]++
+	}
+
+	for i := 1; i < radix; i++ {
+		count[i] += count[i-1]
+	}
+
+	for i := length - 1; i >= 0; i-- {
+		count[(data[i]/exp)%radix]--
+		assist[count[(data[i]/exp)%radix]] = data[i]
+	}
+
+	for i := 0; i < length; i++ {
+		data[i] = assist[i]
+	}
+
+}
+
+func RadixSort(data []int, radix int) {
+	max := findMax(data);
+	for exp := 1; exp <= max; exp *= radix {
+		BucketSort(data,radix,exp)
 	}
 }

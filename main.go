@@ -12,8 +12,8 @@ func main() {
 	fmt.Println("Hello world!")
 	hello.Test()
 
-	//data:=[]int{89,34,2,3,8,11,89,233,5,8,12,3,6}
-	data:=[]int{9,3,2,3,8,1,8,3,5,8,2,3,6}
+	data:=[]int{89,34,2,3,8,11,89,233,5,8,12,3,6}
+	//data:=[]int{9,3,2,3,8,1,8,3,5,8,2,3,6}
 	fmt.Println(data)
 	//arith.InsertSort(data)
 	//arith.BinInsertSort(data)
@@ -24,7 +24,8 @@ func main() {
 	//arith.SelectSort(data)
 	//arith.HeapSort(data)
 	//arith.MergeSort(data)
-	arith.CountSort(data,10)
+	//arith.CountSort(data,10)
+	arith.RadixSort(data,10)
 	fmt.Println(data)
 
 
