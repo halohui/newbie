@@ -19,7 +19,9 @@ func main() {
 	//arith.ShellSort(data)
 	//arith.BubbleSortBig(data)
 	//arith.BubbleSortSmall(data)
-	arith.QuickSort(data,0,len(data)-1)
+	//arith.QuickSort(data,0,len(data)-1)
+	//arith.SelectSort(data)
+	arith.HeapSort(data)
 	fmt.Println(data)
 
 

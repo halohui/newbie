@@ -195,16 +195,16 @@ func partition(data [] int, start int, end int) int {
 	return small
 }
 
-func QuickSort(data []int,start int,end int) {
-	if start<end{
-		pivot :=partition(data,start,end)
+func QuickSort(data []int, start int, end int) {
+	if start < end {
+		pivot := partition(data, start, end)
 
-		if pivot>start{
-			QuickSort(data,start,pivot-1)
+		if pivot > start {
+			QuickSort(data, start, pivot-1)
 		}
 
 		if end > pivot {
-			QuickSort(data,pivot+1,end)
+			QuickSort(data, pivot+1, end)
 		}
 	}
 }
@@ -221,3 +221,57 @@ func QuickSort(data []int,start int,end int) {
 *  2017-11-14 18:56:46          0.00           cxh                创建
 *
 *****************************************************************************/
+func SelectSort(data []int) {
+	length := len(data)
+
+	for i := 0; i < length-1; i++ {
+		index := i
+		for j := i + 1; j < length; j++ {
+			if data[j] < data[index] {
+				index = j
+			}
+		}
+		if index != i {
+			data[i], data[index] = data[index], data[i]
+		}
+	}
+}
+
+/****************************************************************************
+* 功能描述: 堆排序,大顶堆
+* 输入参数:
+* 输出参数:
+* 返 回 值:
+* 其他说明:
+
+* 修改日期                      版本号          修改人            修改内容
+* ---------------------------------------------------------------------------
+*  2017-11-14 19:07:39          0.00           cxh                创建
+*
+*****************************************************************************/
+func adjustHeap(data []int, start int, end int) {
+	for parent, child := start, 2*start+1; child <= end; child = 2*parent + 1 {
+		if child <end && data[child] < data[child+1] { //注意控制条件
+			child++
+		}
+
+		if data[parent] < data[child] {
+			data[parent], data[child] = data[child], data[parent]
+			parent = child
+		} else {
+			break
+		}
+	}
+}
+
+func HeapSort(data []int) {
+	length := len(data)
+	for i := (length - 2) / 2; i >= 0; i-- {
+		adjustHeap(data, i, length-1)
+	}
+
+	for i := length - 1; i > 0; i-- {
+		data[i], data[0] = data[0], data[i]
+		adjustHeap(data, 0, i-1)
+	}
+}
