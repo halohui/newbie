@@ -329,6 +329,6 @@ func mergeCore(data, assist []int, start, end int) {
 }
 
 func MergeSort(data [] int) {
-	assist :=data
+	assist :=make([]int,len(data)) //需要重新生成一个切片
 	mergeCore(data, assist,0,len(data)-1)
 }
