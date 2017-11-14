@@ -21,7 +21,8 @@ func main() {
 	//arith.BubbleSortSmall(data)
 	//arith.QuickSort(data,0,len(data)-1)
 	//arith.SelectSort(data)
-	arith.HeapSort(data)
+	//arith.HeapSort(data)
+	arith.MergeSort(data)
 	fmt.Println(data)
 
 

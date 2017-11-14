@@ -242,7 +242,7 @@ func SelectSort(data []int) {
 * 输入参数:
 * 输出参数:
 * 返 回 值:
-* 其他说明:
+* 其他说明: 时间复杂度为nlog(n)，空间复杂度为O(1)
 
 * 修改日期                      版本号          修改人            修改内容
 * ---------------------------------------------------------------------------
@@ -251,7 +251,7 @@ func SelectSort(data []int) {
 *****************************************************************************/
 func adjustHeap(data []int, start int, end int) {
 	for parent, child := start, 2*start+1; child <= end; child = 2*parent + 1 {
-		if child <end && data[child] < data[child+1] { //注意控制条件
+		if child < end && data[child] < data[child+1] { //注意控制条件
 			child++
 		}
 
@@ -274,4 +274,61 @@ func HeapSort(data []int) {
 		data[i], data[0] = data[0], data[i]
 		adjustHeap(data, 0, i-1)
 	}
+}
+
+/****************************************************************************
+* 功能描述: 归并排序
+* 输入参数:
+* 输出参数:
+* 返 回 值:
+* 其他说明: 时间复杂度度为O(nlog(n)),空间复杂度为O(n)
+
+* 修改日期                      版本号          修改人            修改内容
+* ---------------------------------------------------------------------------
+*  2017-11-14 19:32:24          0.00           cxh                创建
+*
+*****************************************************************************/
+func mergeCore(data, assist []int, start, end int) {
+	if start == end {
+		assist[start] = data[start]
+		return
+	}
+
+	mid := start + (end-start)/2
+	mergeCore(data, assist, start, mid)
+	mergeCore(data, assist, mid+1, end)
+
+	i, j, k := start, mid+1, start
+
+	for i <= mid && j <= end {
+		if data[i] < data[j] {
+			assist[k] = data[i]
+			k++
+			i++
+		} else {
+			assist[k] = data[j]
+			k++
+			j++
+		}
+	}
+
+	for i <= mid {
+		assist[k] = data[i]
+		k++
+		i++
+	}
+	for j <= end {
+		assist[k] = data[j]
+		k++
+		j++
+	}
+
+	for i := start; i <= end; i++ {
+		data[i] = assist[i]
+	}
+}
+
+func MergeSort(data [] int) {
+	assist :=data
+	mergeCore(data, assist,0,len(data)-1)
 }
