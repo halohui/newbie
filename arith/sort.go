@@ -329,6 +329,41 @@ func mergeCore(data, assist []int, start, end int) {
 }
 
 func MergeSort(data [] int) {
-	assist :=make([]int,len(data)) //需要重新生成一个切片
-	mergeCore(data, assist,0,len(data)-1)
+	assist := make([]int, len(data)) //需要重新生成一个切片
+	mergeCore(data, assist, 0, len(data)-1)
+}
+
+/****************************************************************************
+* 功能描述: 计数排序
+* 输入参数: 数组中每个元素的取值为[0,radix-1]
+* 输出参数:
+* 返 回 值:
+* 其他说明:
+
+* 修改日期                      版本号          修改人            修改内容
+* ---------------------------------------------------------------------------
+*  2017-11-14 20:13:49          0.00           cxh                创建
+*
+*****************************************************************************/
+func CountSort(data []int, radix int) {
+	length := len(data)
+	count := make([]int, radix)
+	assist := make([]int, length)
+
+	for i := 0; i < length; i++ {
+		count[data[i]]++
+	}
+
+	for i := 1; i < radix; i++ {
+		count[i] += count[i-1]
+	}
+
+	for i := length - 1; i >= 0; i-- {
+		count[data[i]]--  //下标是从0开始的，因此先减1
+		assist[count[data[i]]] = data[i]
+	}
+
+	for i := 0; i < length; i++ {
+		data[i] = assist[i]
+	}
 }
