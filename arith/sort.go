@@ -417,8 +417,8 @@ func BucketSort(data []int, radix, exp int) {
 }
 
 func RadixSort(data []int, radix int) {
-	max := findMax(data);
+	max := findMax(data)
 	for exp := 1; exp <= max; exp *= radix {
-		BucketSort(data,radix,exp)
+		BucketSort(data, radix, exp)
 	}
 }
