@@ -78,7 +78,7 @@ func DeclareSlice() {
 	fmt.Println(c2)
 	copy(c2,c1)  //切片复制
 	fmt.Println(c2)
-	c3 :=append(c1,7,9,11) //追加,会修改容量数据
+	c3 :=append(c1,7,9,1,90,107,11) //追加,会修改切片的容量
 	fmt.Println(c3,len(c3),cap(c3))
 	fmt.Println(len(c2),cap(c2))
 	fmt.Println(len(c1),cap(c1))

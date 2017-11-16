@@ -23,9 +23,9 @@ func main() {
 	//arith.CountSort(data,10)
 	arith.RadixSort(data[:], 10)
 	fmt.Println(data)
-	//syntax.DeclareArray()
-	syntax.DeclareSlice()
-
+	syntax.DeclareArray()
+	//syntax.DeclareSlice()
+    syntax.AboutMap()
 }
 
 func init() {
