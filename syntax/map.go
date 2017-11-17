@@ -16,4 +16,6 @@ func AboutMap() {
 	a1 = map[int]string{}
 	fmt.Println(a1)
 
+
+
 }

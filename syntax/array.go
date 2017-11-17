@@ -36,9 +36,11 @@ func DeclareArray() {
 	fmt.Println(a5, reflect.TypeOf(a5))
 	fmt.Println(a6, reflect.TypeOf(a6))
 
-	var x [4]int
-	x=[4]int{3,4,6,7}  //先声明，后初始化
-	fmt.Println(x)
+	var x1 [4]int
+	x1 =[4]int{3,4,6,7} //先声明，后初始化
+	fmt.Println(x1)
+	x2:=new(int)
+	fmt.Println(x2)
 }
 
 func DeclareSlice() {
