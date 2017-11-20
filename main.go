@@ -25,9 +25,15 @@ func main() {
 	fmt.Println(data)
 	syntax.DeclareArray()
 	//syntax.DeclareSlice()
-    syntax.AboutMap()
+	syntax.AboutMap()
+	Hello()
+	fmt.Println("this is a test!")
 }
 
 func init() {
 	fmt.Println("This init function in main!")
+}
+
+func Hello() {
+	fmt.Println("hello world!")
 }
