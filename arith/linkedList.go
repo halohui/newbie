@@ -7,5 +7,4 @@ type LinkedNode struct {
 
 func CreateLinkedListByTail(data []int){
 
-
 }

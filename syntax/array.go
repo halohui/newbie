@@ -5,9 +5,21 @@ import (
 	"reflect"
 )
 
+/****************************************************************************
+* 功能描述: 数组定义和初始化的方式
+* 输入参数:
+* 输出参数:
+* 返 回 值:
+* 其他说明:
+
+* 修改日期                      版本号          修改人            修改内容
+* ---------------------------------------------------------------------------
+*  2017-11-20 19:33:10          0.00           cxh                创建
+*
+*****************************************************************************/
 func DeclareArray() {
 	var d1 [3]int
-	var d2 [3]int
+	var d2 [3]int=[3]int{12,23,45}
 	fmt.Println(d1 == d2) //数组可以直接比较，但是不能直接赋值
 	//fmt.Println(d1==nil)  //不能和nil比较，因为类型不一致
 
@@ -16,7 +28,7 @@ func DeclareArray() {
 	var d5 = [4]int{1: 23, 3: 67} //索引初始化的方式
 	fmt.Println(d3, d4, d5)
 
-	var d6 = new([5]int) //d6的类型是*[5]int,这个可以联想C++中的new
+	var d6 = new([5]int) //d6的类型是*[5]int,这个可以和C++中的new类似
 	var d7 [5]int        //d6和d7的类型是不一样的
 	fmt.Println(reflect.TypeOf(d6))
 	fmt.Println(reflect.TypeOf(d7))
@@ -27,7 +39,7 @@ func DeclareArray() {
 	fmt.Println(a2, reflect.TypeOf(a2))
 
 	var a3 = [6]string{2: "chen", 4: "xiao"}   //索引初始化的方式
-	var a4 = [...]string{1: "chen", 6: "xiao"} //索引初始化的方式
+	var a4 = [...]string{1: "chen", 6: "xiao"} //索引初始化的方式，这是数组
 	fmt.Println(a3, reflect.TypeOf(a3))
 	fmt.Println(a4, reflect.TypeOf(a4))
 
@@ -36,19 +48,31 @@ func DeclareArray() {
 	fmt.Println(a5, reflect.TypeOf(a5))
 	fmt.Println(a6, reflect.TypeOf(a6))
 
-	var x1 [4]int
-	x1 =[4]int{3,4,6,7} //先声明，后初始化
-	fmt.Println(x1)
-	x2:=new(int)
-	fmt.Println(x2)
+	var a7 [4]int
+	a7 =[4]int{3,4,6,7} //先声明，后赋值初始化
+	fmt.Println(a7)
+	a8 :=new(int)
+	fmt.Println(a8)
 }
 
+/****************************************************************************
+* 功能描述: 切片的定义和初始化方式
+* 输入参数:
+* 输出参数:
+* 返 回 值:
+* 其他说明:
+
+* 修改日期                      版本号          修改人            修改内容
+* ---------------------------------------------------------------------------
+*  2017-11-20 19:33:03          0.00           cxh                创建
+*
+*****************************************************************************/
 func DeclareSlice() {
 	var a1 = []int{23, 45, 89}     //第一种方式声明切片
 	var a2 = []int{2: 100, 56: 99} //第二种方式声明
 	var a3 = make([]int, 10)       //第3种方式
 	var a4 = make([]int, 3, 10)    //第4种方式
-	var a5 = new([10]int)[2:8]     //第5种方式
+	var a5 = new([10]int)[2:8]     //第5种方式，使用new生成数组时取切片
 
 	fmt.Println(a1, reflect.TypeOf(a1))
 	fmt.Println(a2, reflect.TypeOf(a2))

@@ -28,6 +28,7 @@ func main() {
 	syntax.AboutMap()
 	Hello()
 	fmt.Println("this is a test!")
+	syntax.DeclareArray()
 }
 
 func init() {
