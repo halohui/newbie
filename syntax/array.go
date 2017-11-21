@@ -20,12 +20,14 @@ import (
 func DeclareArray() {
 	var d1 [3]int
 	var d2 [3]int=[3]int{12,23,45}
-	fmt.Println(d1 == d2) //数组可以直接比较，但是不能直接赋值
+	fmt.Println(d1 == d2) //数组可以直接比较，同一类型的数组可以赋值，不同类型的数组不支持赋值，但可以比较
 	//fmt.Println(d1==nil)  //不能和nil比较，因为类型不一致
+
 
 	var d3 [4]int
 	var d4 = [4]int{2, 3}         //var d4 [4]int{2,3}是不正确的
-	var d5 = [4]int{1: 23, 3: 67} //索引初始化的方式
+	var d5 = [4]int{1: 23, 3: 67} //索引初始化的方式,如果前面给出了数组的大小，编译器会进行索引检查
+
 	fmt.Println(d3, d4, d5)
 
 	var d6 = new([5]int) //d6的类型是*[5]int,这个可以和C++中的new类似
@@ -34,7 +36,7 @@ func DeclareArray() {
 	fmt.Println(reflect.TypeOf(d7))
 
 	var a1 = [...]int{1, 2, 3} //这样声明是数组
-	var a2 = []int{3, 4, 5, 6} //这样声明是切片
+	var a2 = []int{3, 4, 5, 6} //这样声明是切片，即[]中没有占位符的声明的就是切片
 	fmt.Println(a1, reflect.TypeOf(a1))
 	fmt.Println(a2, reflect.TypeOf(a2))
 
@@ -72,8 +74,8 @@ func DeclareArray() {
 *
 *****************************************************************************/
 func DeclareSlice() {
-	var a1 = []int{23, 45, 89}     //第一种方式声明切片
-	var a2 = []int{2: 100, 56: 99} //第二种方式声明
+	var a1 = []int{23, 45, 89}     //第1种方式声明切片，直接初始化底层数组
+	var a2 = []int{2: 100, 56: 99} //第2种方式声明，使用索引初始化底层数组
 	var a3 = make([]int, 10)       //第3种方式
 	var a4 = make([]int, 3, 10)    //第4种方式
 	var a5 = new([10]int)[2:8]     //第5种方式，使用new生成数组时取切片
