@@ -19,10 +19,9 @@ import (
 *****************************************************************************/
 func DeclareArray() {
 	var d1 [3]int
-	var d2 [3]int=[3]int{12,23,45}
+	var d2 [3]int = [3]int{12, 23, 45}
 	fmt.Println(d1 == d2) //数组可以直接比较，同一类型的数组可以赋值，不同类型的数组不支持赋值，但可以比较
 	//fmt.Println(d1==nil)  //不能和nil比较，因为类型不一致
-
 
 	var d3 [4]int
 	var d4 = [4]int{2, 3}         //var d4 [4]int{2,3}是不正确的
@@ -51,14 +50,22 @@ func DeclareArray() {
 	fmt.Println(a6, reflect.TypeOf(a6))
 
 	var a7 [4]int
-	a7 =[4]int{3,4,6,7} //先声明，后赋值初始化
+	a7 = [4]int{3, 4, 6, 7} //先声明，后赋值初始化
 	fmt.Println(a7)
-	a8 :=new(int)
+	a8 := new(int)
 	fmt.Println(a8)
 
 	var b1 [5] int
-	b1=[5]int{2:5,4:78} //这种赋值的方式也是支持的
+	b1 = [5]int{2: 5, 4: 78} //这种赋值的方式也是支持的
+
 	fmt.Println(b1)
+
+	var data = [5]int{1, 2, 3, 4, 5}
+	fmt.Println("data=", data)
+	modifyArray(data)
+	fmt.Println("data=", data)
+
+	getFibonacci(50)
 }
 
 /****************************************************************************
@@ -109,13 +116,39 @@ func DeclareSlice() {
 	fmt.Printf("The length of slice1 is %d\n", len(slice1))
 	fmt.Printf("The capacity of slice1 is %d\n", cap(slice1))
 
-	c1:=[]int{1,2,3,6}
-	c2:=make([]int,10)
+	c1 := []int{1, 2, 3, 6}
+	c2 := make([]int, 10)
 	fmt.Println(c2)
-	copy(c2,c1)  //切片复制
+	copy(c2, c1) //切片复制
 	fmt.Println(c2)
-	c3 :=append(c1,7,9,1,90,107,11) //追加,会修改切片的容量cap的值
-	fmt.Println(c3,len(c3),cap(c3))
-	fmt.Println(len(c2),cap(c2))
-	fmt.Println(len(c1),cap(c1))
+	c3 := append(c1, 7, 9, 1, 90, 107, 11) //追加,会修改切片的容量cap的值
+	fmt.Println(c3, len(c3), cap(c3))
+	fmt.Println(len(c2), cap(c2))
+	fmt.Println(len(c1), cap(c1))
+
+}
+
+func modifyArray(data [5]int) {
+
+	for i := 0; i < len(data); i++ {
+		data[i] *= 10
+	}
+
+	fmt.Println("After modified in function data is:", data) //打印拷贝后的数组
+}
+
+func getFibonacci(len int) {
+	first, second, third := 1, 2, 3
+
+	fmt.Print(first, "\t", second, "\t")
+	for i := 2; i < len; i++ {
+		if i%10 == 0 {
+			fmt.Println()
+		}
+		third = first + second
+		first = second
+		second = third
+		fmt.Print(third, "\t")
+	}
+	fmt.Println()
 }
