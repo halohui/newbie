@@ -87,7 +87,6 @@ func DeclareSlice() {
 	var a4 = make([]int, 3, 10)    //第4种方式
 	var a5 = new([10]int)[2:8]     //第5种方式，使用new生成数组时取切片
 
-
 	fmt.Println(a1, reflect.TypeOf(a1))
 	fmt.Println(a2, reflect.TypeOf(a2))
 	fmt.Println(a3, reflect.TypeOf(a3))
@@ -102,7 +101,7 @@ func DeclareSlice() {
 	}
 
 	for i := 0; i < len(b1); i++ {
-		fmt.Printf("%d\t",b1[i])
+		fmt.Printf("%d\t", b1[i])
 	}
 	fmt.Println()
 
@@ -120,8 +119,8 @@ func DeclareSlice() {
 	fmt.Printf("The length of b1 is %d\n", len(b1))
 	fmt.Printf("The capacity of b1 is %d\n", cap(b1))
 
-	c1 := []int{1, 2, 3, 6,8,10,11,23,26,9,10,3,4,8,9}
-	c2 := make([]int, 3,10)
+	c1 := []int{1, 2, 3, 6, 8, 10, 11, 23, 26, 9, 10, 3, 4, 8, 9}
+	c2 := make([]int, 3, 10)
 	fmt.Println(c2)
 	copy(c2, c1) //切片复制，复制内容以len小的为准
 	fmt.Println(c2)
@@ -133,6 +132,18 @@ func DeclareSlice() {
 
 }
 
+/****************************************************************************
+* 功能描述: 验证go中数组是按值传递的
+* 输入参数:
+* 输出参数:
+* 返 回 值:
+* 其他说明: 在函数中修改数组元素的值不会影响
+
+* 修改日期                      版本号          修改人            修改内容
+* ---------------------------------------------------------------------------
+*  2017-11-25 21:22:40          0.00           cxh                创建
+*
+*****************************************************************************/
 func modifyArray(data [5]int) {
 
 	for i := 0; i < len(data); i++ {
@@ -142,7 +153,19 @@ func modifyArray(data [5]int) {
 	fmt.Println("After modified in function data is:", data) //打印拷贝后的数组
 }
 
-func getFibonacci(len int) {
+/****************************************************************************
+* 功能描述: 求Fibonacci数组元素的值
+* 输入参数:
+* 输出参数:
+* 返 回 值:
+* 其他说明: Fibonacci的第一项为
+
+* 修改日期                      版本号          修改人            修改内容
+* ---------------------------------------------------------------------------
+*  2017-11-25 21:24:47          0.00           cxh                创建
+*
+*****************************************************************************/
+func getFibonacci(len int) int {
 	first, second, third := 1, 2, 3
 
 	fmt.Print(first, "\t", second, "\t")
@@ -155,5 +178,6 @@ func getFibonacci(len int) {
 		second = third
 		fmt.Print(third, "\t")
 	}
-	fmt.Println()
+
+	return third
 }
