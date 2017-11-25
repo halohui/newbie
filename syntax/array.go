@@ -87,41 +87,46 @@ func DeclareSlice() {
 	var a4 = make([]int, 3, 10)    //第4种方式
 	var a5 = new([10]int)[2:8]     //第5种方式，使用new生成数组时取切片
 
+
 	fmt.Println(a1, reflect.TypeOf(a1))
 	fmt.Println(a2, reflect.TypeOf(a2))
 	fmt.Println(a3, reflect.TypeOf(a3))
 	fmt.Println(a4, reflect.TypeOf(a4))
 	fmt.Println(a5, reflect.TypeOf(a5))
 
-	var arr1 [6]int
-	var slice1 []int = arr1[2:3:5] // 前闭后开区间，不包括最后一个索引的指向的元素
+	var base [6]int
+	var b1 []int = base[2:3:5] // 前闭后开区间，不包括最后一个索引的指向的元素
 
-	for i := 0; i < len(arr1); i++ {
-		arr1[i] = i
+	for i := 0; i < len(base); i++ {
+		base[i] = i
 	}
 
-	for i := 0; i < len(slice1); i++ {
-		fmt.Printf("Slice at %d is %d\n", i, slice1[i])
+	for i := 0; i < len(b1); i++ {
+		fmt.Printf("%d\t",b1[i])
+	}
+	fmt.Println()
+
+	fmt.Printf("The length of base is %d\n", len(base))
+	fmt.Printf("The length of b1 is %d\n", len(b1))
+	fmt.Printf("The capacity of b1 is %d\n", cap(b1))
+
+	//slice1被赋值之前的cap是3，因此end的值可以取3，这种方式也叫切片重组
+	//因此，end的值页不能够超出b1原来的cap3，否则会出现越界错误
+	b1 = b1[0:3]
+	for i := 0; i < len(b1); i++ {
+		fmt.Printf("Slice at %d is %d\n", i, b1[i])
 	}
 
-	fmt.Printf("The length of arr1 is %d\n", len(arr1))
-	fmt.Printf("The length of slice1 is %d\n", len(slice1))
-	fmt.Printf("The capacity of slice1 is %d\n", cap(slice1))
+	fmt.Printf("The length of b1 is %d\n", len(b1))
+	fmt.Printf("The capacity of b1 is %d\n", cap(b1))
 
-	slice1 = slice1[0:4] //slice1被赋值之前的cap是4，因此end的值可以取4，这种方式也叫切片重组
-	for i := 0; i < len(slice1); i++ {
-		fmt.Printf("Slice at %d is %d\n", i, slice1[i])
-	}
-
-	fmt.Printf("The length of slice1 is %d\n", len(slice1))
-	fmt.Printf("The capacity of slice1 is %d\n", cap(slice1))
-
-	c1 := []int{1, 2, 3, 6}
-	c2 := make([]int, 10)
+	c1 := []int{1, 2, 3, 6,8,10,11,23,26,9,10,3,4,8,9}
+	c2 := make([]int, 3,10)
 	fmt.Println(c2)
-	copy(c2, c1) //切片复制
+	copy(c2, c1) //切片复制，复制内容以len小的为准
 	fmt.Println(c2)
-	c3 := append(c1, 7, 9, 1, 90, 107, 11) //追加,会修改切片的容量cap的值
+	c3 := append(c1, 7, 9, 1, 90, 107, 11)
+	//追加,会修改切片的容量,即cap的值
 	fmt.Println(c3, len(c3), cap(c3))
 	fmt.Println(len(c2), cap(c2))
 	fmt.Println(len(c1), cap(c1))

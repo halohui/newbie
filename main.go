@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"newbie/arith"
 	"newbie/syntax"
 )
 
@@ -24,14 +23,14 @@ func main() {
 	//arith.HeapSort(data)
 	//arith.MergeSort(data)
 	//arith.CountSort(data,10)
-	arith.RadixSort(data[:], 10)
-	fmt.Println(data)
-	syntax.DeclareArray()
-	//syntax.DeclareSlice()
-	syntax.AboutMap()
-	Hello()
+	//arith.RadixSort(data[:], 10)
+	//fmt.Println(data)
+	//syntax.DeclareArray()
+	syntax.DeclareSlice()
+	//syntax.AboutMap()
+	//Hello()
 	fmt.Println("this is a test!")
-	syntax.DeclareArray()
+	//syntax.DeclareArray()
 }
 
 func init() {
