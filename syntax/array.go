@@ -18,7 +18,7 @@ import (
 *
 *****************************************************************************/
 func DeclareArray() {
-	var d1 [3]int
+	var d1 [3]int //声明数组变量，数组中元素全部被初始化为0
 	var d2 [3]int = [3]int{12, 23, 45}
 	fmt.Println(d1 == d2) //数组可以直接比较，同一类型的数组可以赋值，不同类型的数组不支持赋值，但可以比较
 	//fmt.Println(d1==nil)  //不能和nil比较，因为类型不一致
@@ -94,7 +94,7 @@ func DeclareSlice() {
 	fmt.Println(a5, reflect.TypeOf(a5))
 
 	var arr1 [6]int
-	var slice1 []int = arr1[2:5] // 前闭后开区间，不包括最后一个索引的指向的元素
+	var slice1 []int = arr1[2:3:5] // 前闭后开区间，不包括最后一个索引的指向的元素
 
 	for i := 0; i < len(arr1); i++ {
 		arr1[i] = i
