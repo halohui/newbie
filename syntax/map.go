@@ -21,11 +21,10 @@ func AboutMap() {
 	a2[b1]="xiao"
 	fmt.Println(a2)
 
-	a3 := map[int]string{1: "xiao", 63: "chen", 45: "test"}
+	a3 := map[int]string{1: "xiao", 63: "chen", 45: "hui"}
 	fmt.Println(a3)
 
-	for key :=range a3 {
+	for key :=range a3 { //key是随机的排序
 		fmt.Print(key,"\t")
 	}
-
 }

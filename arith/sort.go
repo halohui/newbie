@@ -5,9 +5,9 @@ import (
 	"fmt"
 )
 
-func init() {
+/*func init() {
 	fmt.Println("This init function in sort!")
-}
+}*/
 
 /****************************************************************************
 * 功能描述: 直接插入排序

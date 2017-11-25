@@ -11,8 +11,6 @@ func main() {
 	//data:=[]int{9,3,2,3,8,1,8,3,5,8,2,3,6}
 	fmt.Println(data)
 
-	var x = 34
-	fmt.Println(x)
 	//arith.InsertSort(data)
 	//arith.BinInsertSort(data)
 	//arith.ShellSort(data)
@@ -26,16 +24,14 @@ func main() {
 	//arith.RadixSort(data[:], 10)
 	//fmt.Println(data)
 	//syntax.DeclareArray()
-	syntax.DeclareSlice()
-	//syntax.AboutMap()
-	//Hello()
-	fmt.Println("this is a test!")
-	//syntax.DeclareArray()
+	//syntax.DeclareSlice()
+	syntax.AboutMap()
+
 }
 
-func init() {
+/*func init() {
 	fmt.Println("This init function in main!")
-}
+}*/
 
 func Hello() {
 	fmt.Println("hello world!")
