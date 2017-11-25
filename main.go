@@ -25,7 +25,8 @@ func main() {
 	//fmt.Println(data)
 	//syntax.DeclareArray()
 	//syntax.DeclareSlice()
-	syntax.AboutMap()
+	//syntax.AboutMap()
+	syntax.DeclareStruct()
 
 }
 
