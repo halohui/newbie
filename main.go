@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"newbie/syntax"
+	"unsafe"
+	"math"
 )
 
 func main() {
@@ -25,8 +27,35 @@ func main() {
 	//fmt.Println(data)
 	//syntax.DeclareArray()
 	//syntax.DeclareSlice()
-	//syntax.AboutMap()
-	syntax.DeclareStruct()
+	syntax.AboutMap()
+	//syntax.DeclareStruct()
+
+	v:= struct {
+		a byte
+		b []int
+		c byte
+	}{}
+
+	fmt.Println(unsafe.Alignof(v),unsafe.Sizeof(v))
+	var t1 = [4]int{1,2,3,4}
+	var t2=[...]int{1:67,9:234}
+	fmt.Println(t1,t2)
+	fmt.Println(2&1<<1)
+
+	const pi1 =12
+	fmt.Printf("%T\n", pi1) //float64
+	const pi2 float64=math.Pi
+	fmt.Printf("%T\n" ,pi2) //float64
+
+
+	const p2 int32 =pi1 //为什么这个不可以？？
+	const p3 float32 =pi1
+	const p4 float64=pi1
+	const p5 complex64 =pi1
+	const p6 complex128=pi1
+
+	var b1[0]int   //数组长度可以为0
+	fmt.Println(b1)
 
 }
 

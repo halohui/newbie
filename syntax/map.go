@@ -25,6 +25,21 @@ func AboutMap() {
 	fmt.Println(a3)
 
 	for key :=range a3 { //key是随机的排序
-		fmt.Print(key,"\t")
+		fmt.Print(key,"\t",a3[key])
 	}
+	fmt.Println()
+
+	a3[1]+="xiao"  //可以直接赋值
+
+	for key :=range a3 { //key是随机的排序
+		fmt.Print(key,"\t",a3[key],"\t")
+	}
+	fmt.Println()
+
+	a4:=map[int][4]int{1:{2,3}} //value是数组的初始化
+	fmt.Println(a4)
+
+	/*a4[1][2]=34  //值是数组或者结构体时，不能直接赋值
+	fmt.Println(a4)*/
+
 }
