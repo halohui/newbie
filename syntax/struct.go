@@ -8,7 +8,6 @@ func DeclareStruct() {
 		id   int
 		next *node
 	}
-
 	n1 := node{//使用命名初始化方式，即部分初始化
 		id: 1, //逗号不能省略
 	}
